@@ -1,0 +1,24 @@
+{
+  "name": "tak_assignment",
+  "version": "1.0.0",
+  "description": "Assignment for New web technology class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takDesign/crud_app.git"
+  },
+  "author": "Tak",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "ejs-lint": "^0.3.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "mysql": "^2.17.1",
+    "req-flash": "0.0.3"
+  }
+}

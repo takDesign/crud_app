@@ -1,0 +1,40 @@
+<% include partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (players.length > 0) {%>
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Product Number</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% players.forEach((player, index) => { %>
+            <tr>
+                <th scope="row"><%= player.id %></th>
+                <td><img src="/assets/images/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
+                <td><%= player.name %></td>
+                <td><%= player.product_number %></td>
+                <td><%= player.price %></td>
+                <td><%= player.image %></td>
+                <td>
+                    <a href="/edit/<%= player.id %>" target="_blank" rel="noopener"
+                        class="btn btn-sm btn-success">Edit</a>
+                    <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p class="text-center">No vehicles found. Go <a href="/add">here</a> to add vehicles.</p>
+    <% } %>
+</div>
+</div>
+</body>
+
+</html>
