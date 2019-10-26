@@ -1,0 +1,39 @@
+$primary-color: #00ffa2;
+$secondary-color: #004466;
+
+body {
+	background-color: $primary-color;
+	color: $secondary-color;
+
+	a {
+		color: $secondary-color;
+	}
+
+	div.page-wrapper {
+
+		div.table-wrapper {
+			table {
+				thead {
+					background-color: $secondary-color;
+					color: $primary-color;
+
+					tr {
+						th {
+							border: none;
+						}
+					}
+				}
+
+				tbody {
+					tr {
+						td {
+							img.vehicle-img {
+								width: 250px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -2,13 +2,14 @@
 <div class="table-wrapper">
     <% if (players.length > 0) {%>
     <table class="table table-hovered">
-        <thead class="thead-dark">
+        <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Product Number</th>
                 <th scope="col">Price</th>
+                <th scope="col">Image Name</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -16,15 +17,14 @@
             <% players.forEach((player, index) => { %>
             <tr>
                 <th scope="row"><%= player.id %></th>
-                <td><img src="/assets/images/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
+                <td><img src="/assets/images/<%= player.image %>" class="vehicle-img" alt=""></td>
                 <td><%= player.name %></td>
                 <td><%= player.product_number %></td>
-                <td><%= player.price %></td>
+                <td>$<%= player.price %></td>
                 <td><%= player.image %></td>
                 <td>
-                    <a href="/edit/<%= player.id %>" target="_blank" rel="noopener"
-                        class="btn btn-sm btn-success">Edit</a>
-                    <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm">Edit</a>
+                    <a href="/delete/<%= player.id %>" class="btn btn-sm">Delete</a>
                 </td>
             </tr>
             <% }) %>

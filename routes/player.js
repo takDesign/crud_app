@@ -16,10 +16,13 @@ module.exports = {
 		let name = req.body.name;
 		let product_number = req.body.product_number;
 		let price = req.body.price;
-		let uploadedFile = req.files.image;
-		let image_name = uploadedFile.name;
-		let fileExtension = uploadedFile.mimetype.split('/')[1];
-		image_name = username + '.' + fileExtension;
+		// console.log(price);
+		let uploadedFile = req.files;
+		// console.log(uploadedFile);
+		let image_name = uploadedFile.image.name;
+		// console.log("image mimetype: " + uploadedFile.image.mimetype);
+		let fileExtension = uploadedFile.image.mimetype.split('/')[1];
+		image_name = name + '.' + fileExtension;
 
 		let usernameQuery = "SELECT * FROM `electric` WHERE name = '" + name + "'";
 		// console.log(nameQuery);
@@ -36,9 +39,9 @@ module.exports = {
 				});
 			} else {
 				// check the filetype before uploading it
-				if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
+				if (uploadedFile.image.mimetype === 'image/png' || uploadedFile.image.mimetype === 'image/jpeg' || uploadedFile.image.mimetype === 'image/gif' || uploadedFile.image.mimetype === 'image/jpg') {
 					// upload the file to the /public/assets/img directory
-					uploadedFile.mv(`public/assets/images/${image_name}`, (err) => {
+					uploadedFile.image.mv(`public/assets/images/${image_name}`, (err) => {
 						if (err) {
 							return res.status(500).send(err);
 						}
@@ -53,7 +56,7 @@ module.exports = {
 						});
 					});
 				} else {
-					message = "Invalid File format. Only 'gif', 'jpeg' and 'png' images are allowed.";
+					message = "Invalid File format. Only 'gif','jpg', 'jpeg' and 'png' images are allowed.";
 					res.render('add-player.ejs', {
 						message,
 						title: 'Welcome to Tak Vehicles | View Vehicles'
@@ -82,7 +85,7 @@ module.exports = {
 		let product_number = req.body.product_number;
 		let price = req.body.price;
 
-		let query = "UPDATE `electric` SET `name` = '" + name + "', `product_number` = '" + product_number + "', `price` = '" + price + "' WHERE `players`.`id` = '" + playerId + "'";
+		let query = "UPDATE `electric` SET `name` = '" + name + "', `product_number` = '" + product_number + "', `price` = '" + price + "' WHERE `electric`.`id` = '" + playerId + "'";
 		db.query(query, (err, result) => {
 			if (err) {
 				return res.status(500).send(err);
